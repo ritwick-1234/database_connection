@@ -28,10 +28,8 @@ def validate_integer(value):
     except ValueError:
         return None
 
-
-if st.sidebar.button("Register Yourself"):
-    st.sidebar.markdown("<h4 style='text-align: center;'>Register Yourself</h4>", unsafe_allow_html=True)
-with st.sidebar.form('form 2', clear_on_submit=True):
+st.markdown("<h4 style='text-align: center;'>Register Yourself</h4>", unsafe_allow_html=True)
+with st.form('registration_form', clear_on_submit=True):
     col1, col2 = st.columns(2)
     f_name = col1.text_input("First Name *")
     l_name = col2.text_input("Last Name *")
@@ -65,8 +63,6 @@ with st.sidebar.form('form 2', clear_on_submit=True):
             else:
                 mydb = mysql.connector.connect(**db_config)
                 mycursor = mydb.cursor()
-                mydb = mysql.connector.connect(**db_config)
-                mycursor = mydb.cursor()
 
                 # Create the table if it does not exist
                 mycursor.execute("DROP TABLE IF EXISTS users_4")
@@ -96,5 +92,3 @@ with st.sidebar.form('form 2', clear_on_submit=True):
 
                 mycursor.close()
                 mydb.close()
-
-
